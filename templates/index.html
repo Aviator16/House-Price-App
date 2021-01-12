@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bengaluru_House_Price_prediction</title>
+    </head>
+ 
+<style>
+
+input[type=text], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: bolder;
+}
+
+input[type=number], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: bolder;
+}
+
+input[type=submit] {
+  width: 80%;
+  background-color: springgreen;
+  color:darkslategrey;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size:17;
+  font-weight: bolder;
+}
+
+input[type=submit]:hover {
+  background-color: lawngreen;
+}
+form{
+    border-radius: 10px;
+    padding-top: 5%;
+    font-weight: bolder;
+}
+div {
+ 
+ border-radius: 5px;
+ margin-left: 35%;
+ width: 30%;
+ padding: 20px;
+ 
+}
+h1{
+   color: greenyellow;
+   font-size: 40px;
+   -webkit-text-stroke: 0.3px black;
+   font-weight: bolder;
+   padding: 0px;
+}
+h3{
+ color: white;
+ font-size: 27px;
+ -webkit-text-stroke: 0.3px black;
+}
+
+body {
+            
+            background-image: url("https://raw.githubusercontent.com/Aviator16/madness-1.0/master/Images/houses-in-bengaluru.jpg");
+            background-color: turquoise;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            padding: 0px;
+        }
+       
+
+</style>
+
+<body>
+
+    <h1>Bengaluru House Price Prediction</h1>
+    
+    <div>
+     <!-- Html form which will get all the values from user -->
+     <form action="{{ url_for('predict')}}" method="post" style="background-color:#E6E6FA">
+    
+    <label for="total_sqft">Total square ft. of the house you want</label><br>
+    <input type="number" id="total_sqft" name="total_sqft" placeholder="1911" required="required"><br>
+    
+    <!-- drop down options are provided for the categorical features -->
+    <label for="area_type">Type of area measurement of the house</label><br>
+    <select id="area_type" name="area_type" required="required">
+          <option value="carpet_area">Carpet Area</option>
+          <option value="plot_area">Plot Area</option>
+          <option value="built_up_area">Built up area</option>
+          <option value="Super built_up_area">Super Built up area</option>
+        </select><br>
+      
+    <label for="BHK">BHK (How many bedrooms do you have in mind?)</label><br>
+    <input type="number" id="BHK" name="BHK" placeholder="3" required="required"><br>
+    <label for="location">Location in Bangalore you're interested in</label><br>
+    <input type="text" id="location" name="location" placeholder="Whitefield, Sarjapur Road, Electronic City,.." required="required"><br>
+    <label for="society">The society in Bangalore you wish to stay in</label><br>
+    <input type="text" id="society" name="society" placeholder="unknown,GrrvaGr,PrarePa,Prtates,Sryalan,..." required="required"><br>
+    <label for="bath">Number of bathrooms in the house</label><br>
+    <input type="number" id="bath" name="bath" placeholder="3" required="required"><br>
+    <label for="balcony">How many balconies to enjoy the views</label><br>
+    <input type="number" id="balcony" name="balcony" placeholder="2" required="required"><br>
+    
+    
+    
+    <!-- submit button -->           
+    <input type="submit" value="Calculate the Price of this house">
+    </form>
+    </div>
+        
+    <!-- the predicted text -->
+    <h3>{{ prediction_text }}</h3>
+    
+    </body>
+    </html>
